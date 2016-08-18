@@ -76,5 +76,5 @@ void loop() {
   delay(500);
 
   servonum ++;
-  if (servonum > 9) servonum = 0;
+  if (servonum > 7) servonum = 0;
 }
