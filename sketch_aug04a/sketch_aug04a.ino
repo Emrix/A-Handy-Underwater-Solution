@@ -11,14 +11,11 @@ Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 //More can be called with a different addresses
 //Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver(0x41);
 
-// Depending on the servo make, the pulse width min and max may vary.
-// These should be as small/large as possible without hitting the hard stop
-// for max range. They have to be tweaked as necessary to match the servos connected.
-#define SERVO_MIN  150 // this is the 'minimum' pulse length count (out of 4096)
-#define SERVO_MAX  600 // this is the 'maximum' pulse length count (out of 4096)
 #define NUMBER_OF_SERVOS = 0 //this is how many servos we actually have connected to the board
 
-#define BAUD_RATE = 9600 //this determines what the baud rate is
+//this determines what the baud rate is for the serial connection.
+//This should be the same in the arduino as the python program, or it wont work.
+#define BAUD_RATE = 9600
 
 uint8_t incomingByte = 0;
 bool goingForward;
