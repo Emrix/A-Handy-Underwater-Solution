@@ -25,34 +25,25 @@ ser = serial.Serial("", "")
 # the port is, open the Arduino program, and check to see what serial port the Arduino
 # is connected to.
 def start(port,baudRate)
-	'''Add In: Check to see if a port is already open, and if there is then close it'''
+	# Close the port just to make sure
+	ser.close()
 	# Open the serial port
 	ser = serial.Serial(port, baudRate)
-	'''Add In: check to see if it actually opened'''
 	# loop until the arduino says it's ready
 	while not arduinoConnected:
-	    serin = ser.read()
+	    serin = ser.read() # Wait until we receive data (possible timeout?)
 	    arduinoConnected = True
-	    '''Add In: have a time out feature if it doesn't connect'''
+	    '''Add In: have a more advanced time out feature if it doesn't connect'''
 	return True
 
 # Close the open port
 def stop()
 	ser.close()
-
-# How to write data to the serial port if it's open
-def write(data)
-	'''Add In: check to see if there is an open port or not'''
-	ser.write(data)
-	'''Add In: check to see if it received the info or not'''
-	return True
-
-def read()
-	'''Add In: check to see if there is an open port or not'''
-	data = ser.read()
-	return data
+	arduinoConnected = False
 
 def move(servoNum,forward)
+	if arduinoConnected == False:
+		return 0
 	# Data validation
 	if servoNum > 15:
 		servoNum = 15
@@ -63,32 +54,9 @@ def move(servoNum,forward)
 	# Formatting data
 	moveData = servoNum * 10
 	if forward:
-		revertMove = moveData
 		moveData = moveData + 1
-	else:
-		revertMove = moveData + 1
-	positionData = servoNum + 200
-	# Get previous servo position
-	write(positionData)
-	previousPosition = ser.read()
 	# Move the Servo
-	write(moveData)
-	# Check to see if it actually moved
-	write(positionData)
-	currentPosition = ser.read()
-	if currentPosition == previousPosition:
-		#The move failed, and we should punish the algorithm
-		write(revertMove)
-		return False
-	else
-		return True
-
-
-
-
-
-'''
-servoNum*10 + 1/0 for servo being moved forward or backward (max = 151)
-Anything above 200 would be referring to some sort of potentiometer pin.
-the touch pin would not be connected on this arduino
-'''
+	ser.write(data)
+	# Read the result (the potentiometer output)
+	position = ser.read()
+	return position
