@@ -3,4 +3,4 @@
 This is an ORCA project which will eventually have a robotic hand capable of being
 submersed completely in water, and still function.
 
-Contributors:
+Contributors: Ben Murdoch (murdo25)
