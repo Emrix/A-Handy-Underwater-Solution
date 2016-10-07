@@ -24,6 +24,7 @@ long int pulseLen[NUMBER_OF_SERVOS];
 //incomingByte comes from the serial connection, and it determines what servo is moved
 //and what way it moves.
 uint8_t incomingByte;
+char byteChar;
 //We set this var so know what direction the servo is moving
 bool goingForward;
 
@@ -34,6 +35,7 @@ void setup() {
     pulseLen[x] = 350;
   }
   Serial.begin(BAUD_RATE);
+  Serial.write('1');
   pwm.begin();
   pwm.setPWMFreq(60); // Analog servos run at ~60 Hz updates
 }
@@ -43,10 +45,10 @@ void setup() {
 //a forward or backward motion.  That way we can keep everything within an uint8_t.
 //Then we send the built in potentiometer output for the motor back through the serial port.
 void loop() {
-  if (Serial.available() > 0) { //if it's not available, than we shouldn't do anything
+  if (Serial.available() > 0) { //if if there is data present
 
     //Read Incoming byte
-    incomingByte = Serial.read(); /*There may be a timeout for the serial.read, so we may need to handle that*/
+    incomingByte = Serial.read();
 
     //If there is a 1 on the end of it, the servo moves forward, if it's a 0, it moves backward
     //servoCommand divided by 10 (integer division) results in the servo we want to control
@@ -55,9 +57,9 @@ void loop() {
 
     //This is just something to say that there was no servo that we were told to move
     if (incomingByte >= NUMBER_OF_SERVOS) {
-      Serial.println('N'); //N is for number of servos error
+      Serial.write('N'); //N is for number of servos error
     } else if (incomingByte == 254) {
-      Serial.println('T'); //T is for a timeout error
+      Serial.write('T'); //T is for a potential timeout error
     } else {
       //Update the database right here to what our current position should be
       if (goingForward) {
@@ -79,7 +81,9 @@ void loop() {
       pwm.setPWM(incomingByte, 0, pulseLen[incomingByte]);
 
       //Send back the potentiometer output through the serial port
-      Serial.println(analogRead(incomingByte));
+      incomingByte = analogRead(incomingByte);
+      byteChar = incomingByte;
+      Serial.write(byteChar);
     }
     incomingByte = 254;
   }
