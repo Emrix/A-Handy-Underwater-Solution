@@ -115,7 +115,7 @@ class HUS:
     
 
                 
-            
+        '''          
         #return posistion of servo at servoNum          
         def pos(self,servoNum):
                 # Data validation
@@ -130,4 +130,4 @@ class HUS:
                 position = self.ser.read()
                 return ord(position)
                
-        
+        '''
