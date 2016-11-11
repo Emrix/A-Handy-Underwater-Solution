@@ -23,10 +23,10 @@ Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 long int pulseLen[NUMBER_OF_SERVOS];
 //incomingByte comes from the serial connection, and it determines what servo is moved
 //and what way it moves.
-uint8_t incomingByte;
+int incomingByte;
+int servo;
+int location;
 char byteChar;
-//We set this var so know what direction the servo is moving
-bool goingForward;
 
 
 void setup() {
@@ -52,8 +52,8 @@ void loop() {
 
     //If there is a 1 on the end of it, the servo moves forward, if it's a 0, it moves backward
     //servoCommand divided by 10 (integer division) results in the servo we want to control
-    goingForward = incomingByte % 2;
-    incomingByte = incomingByte / 10;
+    servo = incomingByte / 1000;
+    location = incomingByte % (servo * 1000);
 
     //This is just something to say that there was no servo that we were told to move
     if (incomingByte >= NUMBER_OF_SERVOS) {
@@ -61,14 +61,6 @@ void loop() {
     } else if (incomingByte == 254) {
       Serial.write('T'); //T is for a potential timeout error
     } else {
-      //Update the database right here to what our current position should be
-      if (goingForward) {
-        pulseLen[incomingByte] = pulseLen[incomingByte] + 1;
-      }
-      else {
-        pulseLen[incomingByte] = pulseLen[incomingByte] - 1;
-      }
-
       //Do some data validation here, make sure we aren't going to break anything.
       if (pulseLen[incomingByte] < SERVOMIN) {
         pulseLen[incomingByte] = SERVOMIN;
@@ -76,6 +68,9 @@ void loop() {
       else if (pulseLen[incomingByte] > SERVOMAX) {
         pulseLen[incomingByte] = SERVOMAX;
       }
+
+      //map it to our proper values
+      incomingByte = location / 360 * (SERVOMAX - SERVOMIN)
 
       //Actually move the servo forward or backward by 1 pulse length(?)
       pwm.setPWM(incomingByte, 0, pulseLen[incomingByte]);

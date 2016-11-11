@@ -33,101 +33,27 @@ class HUS:
         def stop(self):
                 self.ser.close()
                 self.arduinoConnected = False
-        '''
-        def move(self, servoNum, forward):
-                if self.arduinoConnected == False:
-                        return 0
-                # Data validation
-                if servoNum > 15:
-                        servoNum = 15
-                if servoNum < 0:
-                        servoNum = 0
-                if forward != True:
-                        forward = False
-                # Formatting data
-                moveData = servoNum * 10
-                if forward:
-                        moveData = moveData + 1
-                # Move the Servo
-                #print(moveData)
-                self.ser.write(chr(moveData))
-                # Read the result (the potentiometer output)
-                position = self.ser.read()
-                #self.ser.read()
-                #self.ser.read()
-                return ord(position)
-        '''        
-        def move(self, servoNum, forward):
-                if self.arduinoConnected == False:
-                        return 0
-                # Data validation
-                if servoNum > 15:
-                        servoNum = 15
-                if servoNum < 0:
-                        servoNum = 0
-                if forward != True:
-                        forward = False
-                # Formatting data
-                moveData = servoNum * 10
-                if forward:
-                        moveData = moveData + 1
-                # Move the Servo
-                #print(moveData)
-                self.ser.write(chr(moveData))
-                # Read the result (the potentiometer output)
-                position = self.ser.read()
-                
-                return ord(position)
-               
-        def move_to(self,servoNum,degree):
-                if self.arduinoConnected == False:
-                        return 0
-                # Data validation
-                if servoNum > 15:
-                        return 0
-                if servoNum < 0:
-                        return 0
-                #if forward != True:
-                #        forward = False
-                # Formatting data
-                #moveData = servoNum * 10
-                #if forward:
-                #        moveData = moveData + 1
-                
-                # Move the Servo
-                #print(moveData)
-                
-                servoNum = servoNum *10
-                
-                moveData = servoNum + degree
-                #moveData = degree * 10
-                self.ser.write(chr(moveData))
-                # Read the result (the potentiometer output)
-                position = self.ser.read()
-                
-                return ord(position)
-                
-                
-          
-        def move_by(self, servo, direction, ammount):    
-                for i in range(ammount):
-                    print(self.move(servo, direction)) #Move Forwar
-    
 
-                
-            
-        #return posistion of servo at servoNum          
-        def pos(self,servoNum):
-                # Data validation
+        def move(self, servoNum, location):
                 if self.arduinoConnected == False:
                         return 0
-                
+                # Data validation
                 if servoNum > 15:
                         servoNum = 15
                 if servoNum < 0:
-                        servoNum = 0 
-                
+                        servoNum = 0
+                if location > 359:
+                        location = 15
+                if location < 0:
+                        location = 0
+                # Formatting data
+                moveData = servoNum * 1000
+                moveData = moveData + location
+                # Move the Servo
+                #print(moveData)
+                self.ser.write(chr(moveData))
+                # Read the result (the potentiometer output)
                 position = self.ser.read()
+                #self.ser.read()
+                #self.ser.read()
                 return ord(position)
-               
-        
