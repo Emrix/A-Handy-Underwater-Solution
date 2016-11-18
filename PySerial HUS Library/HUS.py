@@ -38,22 +38,17 @@ class HUS:
                 if self.arduinoConnected == False:
                         return 0
                 # Data validation
-                if servoNum > 15:
-                        servoNum = 15
-                if servoNum < 0:
-                        servoNum = 0
-                if location > 359:
-                        location = 15
-                if location < 0:
-                        location = 0
-                # Formatting data
-                moveData = servoNum * 1000
-                moveData = moveData + location
-                # Move the Servo
-                #print(moveData)
-                self.ser.write(chr(moveData))
+                if servoNum > 16:
+                        servoNum = 16
+                if servoNum < 1:
+                        servoNum = 1
+                if location > 255:
+                        location = 255
+                if location < 1:
+                        location = 1
+                # Send the Data
+                self.ser.write(chr(servoNum))
+                self.ser.write(chr(location))
                 # Read the result (the potentiometer output)
                 position = self.ser.read()
-                #self.ser.read()
-                #self.ser.read()
                 return ord(position)
