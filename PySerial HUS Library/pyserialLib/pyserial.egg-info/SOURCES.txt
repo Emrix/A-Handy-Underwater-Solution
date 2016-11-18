@@ -1,0 +1,127 @@
+CHANGES.rst
+LICENSE.txt
+MANIFEST.in
+README.rst
+pylintrc
+setup.cfg
+setup.py
+documentation/Makefile
+documentation/appendix (DESKTOP-LQUSR78's conflicted copy 2016-08-28).rst
+documentation/appendix.rst
+documentation/conf.py
+documentation/examples (DESKTOP-LQUSR78's conflicted copy 2016-08-28).rst
+documentation/examples.rst
+documentation/index (DESKTOP-LQUSR78's conflicted copy 2016-08-28).rst
+documentation/index.rst
+documentation/pyserial (DESKTOP-LQUSR78's conflicted copy 2016-08-28).rst
+documentation/pyserial.png
+documentation/pyserial.rst
+documentation/pyserial_api (DESKTOP-LQUSR78's conflicted copy 2016-08-28).rst
+documentation/pyserial_api.rst
+documentation/shortintro (DESKTOP-LQUSR78's conflicted copy 2016-08-28).rst
+documentation/shortintro.rst
+documentation/tools (DESKTOP-LQUSR78's conflicted copy 2016-08-28).rst
+documentation/tools.rst
+documentation/url_handlers (DESKTOP-LQUSR78's conflicted copy 2016-08-28).rst
+documentation/url_handlers.rst
+examples/at_protocol.py
+examples/port_publisher.py
+examples/port_publisher.sh
+examples/rfc2217_server.py
+examples/setup-miniterm-py2exe.py
+examples/setup-rfc2217_server-py2exe.py
+examples/setup-wxTerminal-py2exe.py
+examples/tcp_serial_redirect.py
+examples/wxSerialConfigDialog.py
+examples/wxSerialConfigDialog.wxg
+examples/wxTerminal.py
+examples/wxTerminal.wxg
+pyserial.egg-info/PKG-INFO
+pyserial.egg-info/PKG-INFO (DESKTOP-LQUSR78's conflicted copy 2016-08-28)
+pyserial.egg-info/SOURCES (DESKTOP-LQUSR78's conflicted copy 2016-08-28).txt
+pyserial.egg-info/SOURCES.txt
+pyserial.egg-info/dependency_links (DESKTOP-LQUSR78's conflicted copy 2016-08-28).txt
+pyserial.egg-info/dependency_links.txt
+pyserial.egg-info/top_level (DESKTOP-LQUSR78's conflicted copy 2016-08-28).txt
+pyserial.egg-info/top_level.txt
+serial/__init__ (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+serial/__init__.py
+serial/aio (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+serial/aio.py
+serial/rfc2217 (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+serial/rfc2217.py
+serial/rs485 (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+serial/rs485.py
+serial/serialcli (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+serial/serialcli.py
+serial/serialjava (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+serial/serialjava.py
+serial/serialposix (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+serial/serialposix.py
+serial/serialutil (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+serial/serialutil.py
+serial/serialwin32 (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+serial/serialwin32.py
+serial/win32 (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+serial/win32.py
+serial/threaded/__init__ (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+serial/threaded/__init__.py
+serial/tools/__init__.py
+serial/tools/hexlify_codec (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+serial/tools/hexlify_codec.py
+serial/tools/list_ports (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+serial/tools/list_ports.py
+serial/tools/list_ports_common (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+serial/tools/list_ports_common.py
+serial/tools/list_ports_linux (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+serial/tools/list_ports_linux.py
+serial/tools/list_ports_osx (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+serial/tools/list_ports_osx.py
+serial/tools/list_ports_posix (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+serial/tools/list_ports_posix.py
+serial/tools/list_ports_windows (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+serial/tools/list_ports_windows.py
+serial/tools/miniterm (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+serial/tools/miniterm.py
+serial/urlhandler/__init__.py
+serial/urlhandler/protocol_alt (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+serial/urlhandler/protocol_alt.py
+serial/urlhandler/protocol_hwgrep (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+serial/urlhandler/protocol_hwgrep.py
+serial/urlhandler/protocol_loop (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+serial/urlhandler/protocol_loop.py
+serial/urlhandler/protocol_rfc2217 (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+serial/urlhandler/protocol_rfc2217.py
+serial/urlhandler/protocol_serve-rfc2217 (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+serial/urlhandler/protocol_serve-rfc2217.py
+serial/urlhandler/protocol_socket (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+serial/urlhandler/protocol_socket.py
+serial/urlhandler/protocol_spy (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+serial/urlhandler/protocol_spy.py
+test/run_all_tests.py
+test/test (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+test/test.py
+test/test_advanced (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+test/test_advanced.py
+test/test_asyncio (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+test/test_asyncio.py
+test/test_cancel (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+test/test_cancel.py
+test/test_high_load (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+test/test_high_load.py
+test/test_iolib (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+test/test_iolib.py
+test/test_pty (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+test/test_pty.py
+test/test_readline (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+test/test_readline.py
+test/test_rfc2217 (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+test/test_rfc2217.py
+test/test_rs485 (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+test/test_rs485.py
+test/test_settings_dict (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+test/test_settings_dict.py
+test/test_url (DESKTOP-LQUSR78's conflicted copy 2016-08-28).py
+test/test_url.py
+test/handlers/__init__.py
+test/handlers/protocol_test.py

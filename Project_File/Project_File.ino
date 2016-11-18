@@ -23,20 +23,21 @@ Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 //number, as well as the position it is moved to
 int incomingByte;
 int servo;
-int position;
+int pos;
 //The returning data
 char byteChar;
 
-
 void setup() {
+    pinMode(LED_BUILTIN, OUTPUT);
   //Set default values for all servos (350 should be about midpoint for most servos)
-  for (int x = 0; x < NUMBER_OF_SERVOS; x++) {
-    pwm.setPWM(x, 0, 350);
-  }
   Serial.begin(BAUD_RATE);
   Serial.write('1');
   pwm.begin();
   pwm.setPWMFreq(60); // Analog servos run at ~60 Hz updates
+  for (int x = 0; x < NUMBER_OF_SERVOS; x++) {
+    delay(500);
+    pwm.setPWM(x, 0, 350);
+  }
 }
 
 //Retrieve a bit (servo) from Serial Port (ie: 1, 2, 5, 9, 16)
@@ -52,8 +53,8 @@ void loop() {
     servo--;
     //repeat for the position
     incomingByte = Serial.read();
-    position = incomingByte;
-    position--;
+    pos = incomingByte;
+    pos--;
 
     //This is just something to say that there was no servo that we were told to move
     if (servo >= NUMBER_OF_SERVOS) {
@@ -62,17 +63,17 @@ void loop() {
       Serial.write('T'); //T is for a potential timeout error
     } else {
       //We have to do some formatting with the position data to map it correctly
-      position = ((SERVOMAX-SERVOMIN)/255*position)
+      pos = ((SERVOMAX-SERVOMIN)/255*pos);
       //Do some data validation here, make sure we aren't going to break anything.
-      if (position < SERVOMIN) {
-        position = SERVOMIN;
+      if (pos < SERVOMIN) {
+        pos = SERVOMIN;
       }
-      else if (position > SERVOMAX) {
-        position = SERVOMAX;
+      else if (pos > SERVOMAX) {
+        pos = SERVOMAX;
       }
 
       //Actually move the servo to the specified pulse length
-      pwm.setPWM(servo, 0, position);
+      pwm.setPWM(servo, 0, pos);
 
       //Send back the potentiometer output through the serial port
       byteChar = analogRead(servo);
