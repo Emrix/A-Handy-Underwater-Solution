@@ -6,6 +6,9 @@ Created on 2016-8-27
 Updated on 2016-11-18
 
 @author: Matt Ricks
+
+
+http://stackoverflow.com/questions/345187/math-mapping-numbers
 '''
 
 # Import HUS Library.
