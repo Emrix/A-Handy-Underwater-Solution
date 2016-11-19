@@ -51,6 +51,7 @@ void loop() {
     //transform the byte into an int
     servo = incomingByte;
     servo--;
+    delay(100);
     //repeat for the position
     incomingByte = Serial.read();
     pos = incomingByte;

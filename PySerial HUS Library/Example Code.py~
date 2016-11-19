@@ -27,9 +27,11 @@ import math
 def f(x):
     return int(  ((x)/255.0) * (100.0 - 255.0) + 255.0  )
 
-def move_servo2(pos):    
+def move_servo2(pos):
+    '''    
     if pos > 255 or pos < 0:
-        pos = 0  
+        pos = 0
+    '''   
     Hand.move(3,pos)
     Hand.move(4,f(pos))
 
